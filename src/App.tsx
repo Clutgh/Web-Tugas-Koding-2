@@ -100,7 +100,7 @@ function App() {
   };
 
   if (profile) {
-    return <Kasir />;
+    return <Kasir profile={profile} />;
   }
 
   return (

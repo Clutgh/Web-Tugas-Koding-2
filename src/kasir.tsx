@@ -34,7 +34,17 @@ interface Discount {
   minPurchase: number;
 }
 
-export default function Kasir() {
+type Profile = {
+  id: string;
+  nama: string;
+  role: string;
+};
+
+export default function Kasir({
+  profile,
+}: {
+  profile: Profile;
+}) {
   const [products, setProducts] = useState<Product[]>([]);
   const [cart, setCart] = useState<Product[]>([]);
   const [meja, setMeja] = useState<Meja[]>([]);
@@ -50,6 +60,15 @@ export default function Kasir() {
 
   // State Diskon
   const [activeDiscount, setActiveDiscount] = useState<Discount | null>(null);
+
+  const handleAdminMenu = (menu: string) => {
+  if (profile.role !== "admin") {
+    alert("⚠️ Hanya Admin yang bisa mengakses fitur ini!");
+    return;
+  }
+
+  setActiveMenu(menu);
+};
 
   const availableDiscounts: Discount[] = [
     { code: "HEMAT10", value: 10, minPurchase: 50000 },
@@ -269,7 +288,7 @@ export default function Kasir() {
             ...menuBtn,
             background: activeMenu === "meja" ? "#4e342e" : "#8b5e3c",
           }}
-          onClick={() => setActiveMenu("meja")}
+          onClick={() => handleAdminMenu("meja")}
         >
           📜 Riwayat
         </button>
@@ -278,7 +297,7 @@ export default function Kasir() {
             ...menuBtn,
             background: activeMenu === "stok" ? "#4e342e" : "#8b5e3c",
           }}
-          onClick={() => setActiveMenu("stok")}
+          onClick={() => handleAdminMenu("stok")}
         >
           📦 Stok
         </button>
@@ -287,7 +306,7 @@ export default function Kasir() {
             ...menuBtn,
             background: activeMenu === "dashboard" ? "#4e342e" : "#8b5e3c",
           }}
-          onClick={() => setActiveMenu("dashboard")}
+          onClick={() => handleAdminMenu("dashboard")}
         >
           📊 Dashboard
         </button>
