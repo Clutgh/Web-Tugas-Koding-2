@@ -741,7 +741,8 @@ export default function Kasir() {
             NASGOR NUSANTARA
           </h1>
           <p style={{ fontSize: "10px", margin: "1px 0" }}>
-            Jl. Pocut Baren No.116, Banda Aceh. Telp 0853 6199 3203
+            Jl. Pocut Baren No.116, Keuramat, Banda Aceh, Kota Banda Aceh, Aceh
+            23123. Telp 0853 6199 3203
           </p>
           <div
             style={{ borderBottom: "1px dashed #000", margin: "10px 0" }}
